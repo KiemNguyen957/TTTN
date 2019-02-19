@@ -16,6 +16,7 @@ class CreateCategorylistTable extends Migration
         Schema::create('categorylist', function (Blueprint $table) {
             $table->increments('id');
             $table->string('name');
+            $table->string('slug')->nullable();
             $table->timestamps();
         });
     }

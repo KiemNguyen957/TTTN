@@ -29,6 +29,6 @@ class ProductsTableSeeder extends Seeder
             'description'=>'Samsung Galaxy A8 Star là chiếc điện thoại thứ 2 của Samsung chạy trên nền tảng Android Go siêu nhẹ được tối ưu dành riêng cho những chiếc máy giá rẻ',
             'category_id'=>2,
         ]);
-        factory(Product::class,50)->create();
+        factory(Product::class,100)->create();
     }
 }

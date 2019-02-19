@@ -23,6 +23,7 @@ class Product extends Model
         'pin',
         'description',
         'category_id',
+        'slug',
     ];
     public function categorylist()
     {

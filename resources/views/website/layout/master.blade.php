@@ -45,11 +45,61 @@
 	<link rel="stylesheet" href="web/css/ie.css">
 	<!-- MODERNIZR JS -->
 	<script src="web/js/vendor/modernizr-2.6.2.min.js"></script>
-	@yield('libcss')
+	<link href="admin/lib/font-awesome/css/font-awesome.css" rel="stylesheet" />
+<!-- Custom styles for this template -->
+	<link href="admin/css/style.css" rel="stylesheet">
+	<link href="admin/css/style-responsive.css" rel="stylesheet">
 </head>
 
-<body>
-
+<body id="body">
+		<div id="popup">
+			@if (session('notification'))
+				{{session('notification')}}
+				<script>
+					document.getElementById('popup').style.display="block";
+				</script>
+			@endif
+		</div>
+		<div id="login-page">
+				<div class="background-lg"></div>
+				<div class="container">
+				  <form class="form-login" action="" method="post">
+				  {{csrf_field()}}
+					<h2 style="position: relative;" class="form-login-heading">Đăng nhập
+						<a onclick="hidden_login()" id="close-login"><i class="fa fa-times"></i></a>
+					</h2>
+					<br>
+					<div style="padding: 0 30px;">
+						<input type="text" class="form-control" name="email" placeholder="Email">
+						<br>
+						<input type="password" class="form-control" name="password" placeholder="Password">
+						<label id="error_acc" class="col-lg-12 control-label regist-lable text-red">
+						</label>
+					  	<label class="checkbox">
+						<input type="checkbox" name="remember" class="pull-left" style="margin: 2px 0 0;position:unset;" > <span class="pull-left">Nhớ mật khẩu</span>
+						<span class="pull-right">
+						<a data-toggle="modal" href="login.html#myModal"> Quên mật khẩu</a>
+						</span>
+						</label>
+						<button id="login" class="btn btn-theme btn-block" type="button">
+						<i class="fa fa-lock"></i> ĐĂNG NHẬP</button>
+						<hr>
+						<div class="login-social-link centered" >
+							<p>hoặc</p>
+							<a href="redirect/facebook" class="btn btn-facebook" type="submit"><i class="fa fa-facebook"></i> Facebook</a>
+							<a href="redirect/google" class="btn btn-twitter" type="submit"><i class="fa fa-google"></i> Google</a>
+						</div>
+					  <div class="registration" style="text-align: center;padding-bottom: 20px;">
+						Bạn chưa có tài khoản<br/>
+						<a class="" href="{{route('web.get.register')}}">
+						  Đăng ký
+						  </a>
+					  </div>
+					</div>
+					
+				  </form>
+				</div>
+			</div>
 	<!-- HEADER-TOP START -->
 	<div class="header-top">
 		<div class="container">
@@ -68,7 +118,7 @@
 									<a href="{{route('web.get.register')}}">Đăng ký</a>
 								</li>
 								<li>
-									<a href="{{route('web.get.login')}}">Đăng nhập</a>
+									<a onclick="show()" style="cursor: pointer">Đăng nhập</a>
 								</li>
                                 @endif
 							</ul>
@@ -103,7 +153,7 @@
 						<form action="#" method="get" class="search-form-cat">
 							<div class="search-product form-group">
 								<input type="text" class="form-control search-form" name="s" placeholder="Tìm kiếm ... " style="width:100%" />
-								<button class="search-button" value="Search" name="s" type="submit">
+								<button class="search-button" value="Search" name="s" type="submit" style="height: 100%;">
 									<i class="fa fa-search"></i>
 								</button>
 							</div>
@@ -122,70 +172,66 @@
 				<!-- SHOPPING-CART START -->
 				<div class="col-lg-3 col-md-3 col-sm-12 col-xs-12 pull-right shopingcartarea">
 					<div class="shopping-cart-out pull-right">
+							@if(Session::has('cart'))
+							@php
+								$cart = Session('cart');
+								$list_product = $cart->items;
+								//dd($list_product);
+							@endphp
 						<div class="shopping-cart">
-							<a class="shop-link" href="cart.html" title="View my shopping cart">
+							<a class="shop-link" href="{{route('web.cart')}}" title="View my shopping cart">
 								<i class="fa fa-shopping-cart cart-icon"></i>
-								<b>My Cart</b>
-								<span class="ajax-cart-quantity">2</span>
+								<b>Giỏ hàng</b>
+							<span class="ajax-cart-quantity">@if(Session::has('cart')){{Session('cart')->totalQuantity}}@else 0 @endif</span>
 							</a>
 							<div class="shipping-cart-overly">
-								<div class="shipping-item">
-									<span class="cross-icon">
-										<i class="fa fa-times-circle"></i>
-									</span>
-									<div class="shipping-item-image">
-										<a href="#">
-											<img src="web/img/shopping-image.jpg" alt="shopping image" />
-										</a>
-									</div>
-									<div class="shipping-item-text">
-										<span>2
-											<span class="pro-quan-x">x</span>
-											<a href="#" class="pro-cat">Watch</a>
-										</span>
-										<span class="pro-quality">
-											<a href="#">S,Black</a>
-										</span>
-										<p>$22.95</p>
-									</div>
-								</div>
-								<div class="shipping-item">
-									<span class="cross-icon">
-										<i class="fa fa-times-circle"></i>
-									</span>
-									<div class="shipping-item-image">
-										<a href="#">
-											<img src="web/img/shopping-image2.jpg" alt="shopping image" />
-										</a>
-									</div>
-									<div class="shipping-item-text">
-										<span>2
-											<span class="pro-quan-x">x</span>
-											<a href="#" class="pro-cat">Women Bag</a>
-										</span>
-										<span class="pro-quality">
-											<a href="#">S,Gary</a>
-										</span>
-										<p>$19.95</p>
-									</div>
-								</div>
+										@foreach ($list_product as $crt)
+										<div class="shipping-item">
+											<span class="cross-icon"><a href="{{route('web.cart.delete',$crt['item']['id'])}}"><i class="fa fa-times-circle"></i></a></span>
+											<div class="shipping-item-image">
+											<a href="#"><img style="width:80px;" src="storage/{{$crt['item']['image']}}" alt="shopping image" /></a>
+											</div>
+											<div class="shipping-item-text">
+											<span>{{$crt['qty']}}<span class="pro-quan-x">x</span> <a href="#" style="text-transform: lowercase;" title="{{$crt['item']['name']}}" class="pro-cat">{{shorten_string($crt['item']['name'],2)}}</a></span>
+										
+												<p>{{number_format($crt['price'])}}<sup>đ</sup></p>
+											</div>
+										</div>
+										@endforeach
 								<div class="shipping-total-bill">
-									<div class="cart-prices">
-										<span class="shipping-cost">$2.00</span>
-										<span>Shipping</span>
-									</div>
 									<div class="total-shipping-prices">
-										<span class="shipping-total">$24.95</span>
-										<span>Total</span>
-									</div>
+										<span class="shipping-total">{{number_format($cart->totalPrice)}}<sup>đ</sup> </span>
+										<span>Tổng tiền: </span>
+									</div>										
 								</div>
 								<div class="shipping-checkout-btn">
-									<a href="checkout.html">Check out
-										<i class="fa fa-chevron-right"></i>
-									</a>
+									<a href="checkout.html">Check out <i class="fa fa-chevron-right"></i></a>
 								</div>
 							</div>
 						</div>
+						@else
+						<div class="shopping-cart">
+							<a class="shop-link" href="{{route('web.cart')}}" title="View my shopping cart">
+								<i class="fa fa-shopping-cart cart-icon"></i>
+								<b>My Cart</b>
+								<span class="ajax-cart-quantity">0</span>
+							</a>
+							<div class="shipping-cart-overly">
+								<div class="shipping-item">
+								   <p>Giỏ hàng trống</p>
+								</div>
+								<div class="shipping-total-bill">
+									<div class="total-shipping-prices">
+										<span class="shipping-total">0 đ</span>
+										<span>Tổng tiền</span>
+									</div>										
+								</div>
+								<div class="shipping-checkout-btn">
+									<a href="checkout.html">Check out <i class="fa fa-chevron-right"></i></a>
+								</div>
+							</div>
+						</div>
+						@endif
 					</div>
 				</div>
 				<!-- SHOPPING-CART END -->
@@ -197,8 +243,8 @@
 								<li class="@yield('home_active')">
 								<a href="{{route('web.index')}}">Trang chủ</a>
 								</li>
-								<li>
-								<a href="{{route('web.products')}}">Điện thoại</a>
+								<li class="@yield('phone_active')">
+								<a href="{{route('web.catelogs',1)}}">Điện thoại</a>
 								</li>
 								<li>
 									<a href="#">Tin tức</a>
@@ -285,7 +331,6 @@
 			</div>
 		</div>
 	</section>
-
 	<footer class="copyright-area">
 		<div class="container">
 			<div class="row">
@@ -337,7 +382,47 @@
 	</script>
 	<!-- main js -->
 	<script src="web/js/main.js"></script>
-	@yield('libjs')
+	<script src="admin/lib/jquery/jquery.min.js"></script>
+	<script src="admin/lib/bootstrap/js/bootstrap.min.js"></script>
+	<script type="text/javascript" src="admin/lib/jquery.backstretch.min.js"></script>
+	<script>
+		var login = document.getElementById('login-page');
+		var body = document.getElementById('body');
+		function show(){
+			login.classList.add('show');
+			body.style.overflow="hidden";
+		}
+		function hidden_login(){
+			login.classList.remove('show');
+			body.style.overflow="visible";
+		}
+		setTimeout(function(){
+			document.getElementById('popup').style.display="none";
+		},5000);
+
+        $(document).ready(function(){
+            $('#login').click(function(){
+				// alert();
+                var email = $("input[name=email]").val();
+        		var password = $("input[name=password]").val();
+                var _token = $('input[name="_token"]').val();
+				$.ajax({
+					type: 'POST',
+					url: "{{ route('web.post.login') }}",
+					data:{email:email,password:password,_token:_token},
+					success:function(data){
+						$('#error_acc').html(data);
+					},
+				});      
+            }); 
+        });
+	</script>
+	@if (session('error'))
+		<script>
+			show();
+		</script>
+	@endif
+
 </body>
 
 </html>

@@ -8,6 +8,11 @@ class Categorylist extends Model
 {
     protected $table='categorylist';
     protected $fillable=[
-        'name'
+        'name',
+        'slug',
     ];
+    public function products()
+    {
+        return $this->hasMany(Product::class, 'category_id','id'); 
+    }
 }

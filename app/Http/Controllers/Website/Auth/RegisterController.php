@@ -30,8 +30,7 @@ class RegisterController extends Controller
             $request->password = $request->merge(['password' => bcrypt($request->password)]);
             $request->level = $request->merge(['level' =>'customer']);
             User::create($request->all());
-            $notification = 'Đăng ký thành công';
-            return view('website.login',compact('notification'));
+            return redirect()->route('web.index')->with('notification', 'Đăng ký thành công');
         }
         else
         {

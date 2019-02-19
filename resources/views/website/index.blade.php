@@ -1,6 +1,7 @@
 @extends('website.layout.master')
 @section('title','Trang chủ')
 @section('home_active','active')
+	
 @section('content')
 	<section class="main-content-section">
 		<div class="container">
@@ -40,15 +41,15 @@
 								<div class="item">
 									<div class="single-product-item">
 										<div class="product-image">
-											<a href="{{route('web.product.single',$product)}}">
+											<a href="{{route('web.product.single',['id'=>$product->id,'name'=>$product->name])}}">
 											<img src="storage/{{$product->image}}" alt="product-image" />
 											</a>
-											<a href="#" class="new-mark-box">new</a>
+											<spen class="new-mark-box">new</span>
 											<div class="overlay-content">
 												<ul>
 													
 													<li>
-														<a href="#" title="Add cart">
+														<a href="{{route('web.cart.add',$product->id)}}" title="Add cart">
 															<i class="fa fa-shopping-cart"></i>
 														</a>
 													</li>
@@ -66,7 +67,7 @@
 													<i class="fa fa-star-half-empty"></i>
 												</div>
 											</div>
-										<a href="{{route('web.product.single',$product->id)}}">{{$product->name}}</a>
+										<a href="{{route('web.product.single',['id'=>$product->id,'name'=>$product->name])}}">{{$product->name}}</a>
 											<div class="price-box">
 												<span class="price">{{number_format($product->price)}} VND</span>
 											</div>
@@ -97,7 +98,7 @@
 											<a href="#">
 											<img src="storage/{{$product->image}}" alt="product-image" />
 											</a>
-											<a href="#" class="new-mark-box">-{{$product->sale}}%</a>
+											<span class="new-mark-box">-{{$product->sale}}%</span>
 											<div class="overlay-content">
 												<ul>
 													<li>
@@ -351,9 +352,6 @@
 				</div>
 			</section>
 			<!-- TOW-COLUMN-PRODUCT END -->
-
-
-
 		</div>
 	</section>
 @endsection

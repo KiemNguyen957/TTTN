@@ -18,6 +18,7 @@ $factory->define(App\Product::class, function (Faker $faker) {
         'memory_card'=>'MicroSD, hỗ trợ tối đa 400 GB',
         'pin'=>'3700 mAh, có sạc nhanh',
         'description'=>'Samsung Galaxy A8 Star là chiếc điện thoại thứ 2 của Samsung chạy trên nền tảng Android Go siêu nhẹ được tối ưu dành riêng cho những chiếc máy giá rẻ',
-        'category_id'=>$faker->randomElement($array = array ('1','2')),
+        'category_id'=>$faker->randomElement($array = array (1,2,3,4,5,6,7,8)),
+        'slug'=>'',
     ];
 });

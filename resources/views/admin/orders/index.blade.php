@@ -1,6 +1,6 @@
 @extends('admin.layout.master')
 @section('title','Admin | Hóa đơn')
-@section('oder_active','active')
+@section('order_active','active')
 @section('content')
 <section id="main-content">
       <section class="wrapper site-min-height">
@@ -14,28 +14,32 @@
                     <th>STT</th>
                     <th>Mã hóa đơn</th>
                     <th>Khách hàng</th>
+                    <th>Ngày tạo</th>
+                    <th>Tổng tiền</th>
                     <th></th>
                   </tr>
                 </thead>
                 <tbody>
-               
+                  @foreach($orders as $index => $order)
                   <tr>
-                    <td></td>
-                    <td></td>
-                    <td></td>
+                    <td>{{$index +1}}</td>
+                    <td>{{$order->code}}</td>
+                    <td>{{$order->user->email}}</td>
+                    <td>{{$order->created_at}}</td>
+                    <td>{{$order->unit_price}}</td>
                     <td>
-                      
-                      <a href="" class="btn btn-primary btn-xs"><i class="fa fa-pencil"></i></a>
-                      <form action="" method="POST" style="display:inline-block">
-                        
-                        <button type="submit" class="btn btn-danger btn-xs"><i class="fa fa-trash-o "></i></button>
+                    <a href="{{route('orders.show',$order)}}" title="xem chi tiết" class="btn btn-primary btn-xs"><i class="fa fa-eye"></i></a>
+                    <form action="{{route('orders.destroy',$order)}}" method="POST" style="display:inline-block">
+                        {{csrf_field()}}
+                        {{method_field('DELETE')}}
+                        <button title="hủy đơn hàng" type="submit" class="btn btn-danger btn-xs"><i class="fa fa-trash-o "></i></button>
                       </form>
-                      
                     </td>
                   </tr>
-             
+                  @endforeach
                 </tbody>
               </table>
+              {{$orders->links()}}
             </div>
             <!-- /content-panel -->
           </div>

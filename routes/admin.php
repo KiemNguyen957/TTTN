@@ -9,4 +9,4 @@ Route::resource('users','UserController');
 Route::resource('category','CategorylistController');
 Route::resource('products','ProductController');
 
-Route::get('/oder','OderController@index')->name('admin.oder.index');
+Route::resource('orders','OrderController');

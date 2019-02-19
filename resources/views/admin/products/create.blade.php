@@ -1,4 +1,4 @@
-@extends('admin.layout.master') @section('title','Thêm sản phẩm') 
+@extends('admin.layout.master') @section('title','Admin | Sản phẩm') 
 @section('libcss')
 <link rel="stylesheet" type="text/css" href="admin/lib/bootstrap-fileupload/bootstrap-fileupload.css" />
 <link rel="stylesheet" type="text/css" href="admin/lib/bootstrap-datepicker/css/datepicker.css" />

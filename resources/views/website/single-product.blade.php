@@ -211,12 +211,12 @@
                             <ul>
                                 @foreach($products_category as $product_cat)
                                 <li>
-                                    <a href="{{route('web.product.single',$product_cat)}}">
+                                    <a href="{{route('web.product.single',['id'=>$product_cat->id,'name'=>$product_cat->name])}}">
                                     <img src="storage/{{$product_cat->image}}" style="max-width:80px" alt="" />
                                     </a>
                                     <div class="r-sidebar-pro-content">
                                         <h5>
-                                            <a href="{{route('web.product.single',$product_cat)}}">{{$product_cat->name}}</a>
+                                            <a href="{{route('web.product.single',['id'=>$product_cat->id,'name'=>$product_cat->name])}}">{{$product_cat->name}}</a>
                                         </h5>
                                     <p>{{number_format($product->price)}} VND</p>
                                     </div>

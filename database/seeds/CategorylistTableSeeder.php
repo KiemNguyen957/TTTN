@@ -14,6 +14,12 @@ class CategorylistTableSeeder extends Seeder
         DB::table('categorylist')->insert([
             ['name'=>'iPhone'],
             ['name'=>'Samsung'],
+            ['name'=>'Oppo'],
+            ['name'=>'Nokia'],
+            ['name'=>'Huawei'],
+            ['name'=>'Xiaomi'],
+            ['name'=>'HTC'],
+            ['name'=>'Asus'],
         ]);
     }
 }

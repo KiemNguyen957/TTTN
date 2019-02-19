@@ -73,7 +73,7 @@
             </a>
           </li>
           <li class="sub-menu">
-            <a class="@yield('oder_active')" href="{{route('admin.oder.index')}}">
+            <a class="@yield('order_active')" href="{{route('orders.index')}}">
               <i class="fa fa-file-text-o"></i>
               <span>Hóa đơn</span>
             </a>

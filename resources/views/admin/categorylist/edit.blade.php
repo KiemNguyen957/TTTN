@@ -1,4 +1,4 @@
-@extends('admin.layout.master') @section('title','Sửa danh mục')
+@extends('admin.layout.master') @section('title','Admin | Danh mục')
 @section('category_active','active')
 @section('content')
 <section id="main-content">

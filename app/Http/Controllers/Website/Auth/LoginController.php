@@ -12,24 +12,21 @@ class LoginController extends Controller
     {
         $this->middleware('guest:web');
     }
-    public function getLogin()
-    {
-        return view('website.login');
-    }
     public function postLogin( Request $request)
     {
-            $email = $request->email;
-            $password = $request->password;
-            $remember = isset($request->remember);
-            if (Auth::attempt(['email' => $email, 'password' => $password], $remember))
+        if($request->ajax()){
+            $email = $request->post('email');
+            $password = $request->get('password');
+            if (Auth::attempt(['email' => $email, 'password' => $password]))
             {
-                return redirect()->route('web.index');
+                return redirect()->back();
             }
             else
             {
-                $error ='Tài khoản hoặc mật khẩu không đúng';
-                return view('website.login',compact('error'));
+                return 'Tài khoản hoặc mật khẩu không đúng';
             }
+           
+        }
     }
 
 }

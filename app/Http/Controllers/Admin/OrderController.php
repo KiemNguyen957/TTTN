@@ -4,9 +4,9 @@ namespace App\Http\Controllers\Admin;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use App\Categorylist;
+use App\Order;
 
-class CategorylistController extends Controller
+class OrderController extends Controller
 {
     public function __construct()
     {
@@ -19,10 +19,9 @@ class CategorylistController extends Controller
      */
     public function index()
     {
-        $categorylist = Categorylist::all();
-        return view('admin.categorylist.index',compact('categorylist'));
+        $orders = Order::orderBy('created_at', 'desc')->paginate(9);
+        return view('admin.orders.index',compact('orders'));
     }
-
     /**
      * Show the form for creating a new resource.
      *
@@ -30,7 +29,7 @@ class CategorylistController extends Controller
      */
     public function create()
     {
-        return view('admin.categorylist.create');
+        //
     }
 
     /**
@@ -41,9 +40,7 @@ class CategorylistController extends Controller
      */
     public function store(Request $request)
     {
-        $request->merge(['slug' => changeTitle($request->name)]);
-        Categorylist::create($request->all());
-        return redirect()->route('category.index');
+        //
     }
 
     /**
@@ -54,7 +51,8 @@ class CategorylistController extends Controller
      */
     public function show($id)
     {
-        //
+        $order = Order::FindOrFail($id);
+        return view('admin.orders.show');
     }
 
     /**
@@ -65,8 +63,7 @@ class CategorylistController extends Controller
      */
     public function edit($id)
     {
-        $category = Categorylist::findOrFail($id);
-        return view('admin.categorylist.edit',compact(['category']));
+        //
     }
 
     /**
@@ -78,10 +75,7 @@ class CategorylistController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $request->merge(['slug' => changeTitle($request->name)]);
-        $category = Categorylist::findOrFail($id);
-        $category->update($request->all());
-        return redirect()->route('category.index');
+        //
     }
 
     /**
@@ -92,8 +86,8 @@ class CategorylistController extends Controller
      */
     public function destroy($id)
     {
-        $category = Categorylist::findOrFail($id);
-        $category->delete();
-        return redirect()->route('category.index');
+        $order = Order::findOrFail($id);
+        $order->delete();
+        return redirect()->route('orders.index');
     }
 }
