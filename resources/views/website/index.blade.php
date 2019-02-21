@@ -41,19 +41,18 @@
 								<div class="item">
 									<div class="single-product-item">
 										<div class="product-image">
+											{{csrf_field()}}
 											<a href="{{route('web.product.single',['id'=>$product->id,'name'=>$product->name])}}">
-											<img src="storage/{{$product->image}}" alt="product-image" />
+												<img src="storage/{{$product->image}}" alt="product-image" />
 											</a>
-											<spen class="new-mark-box">new</span>
+											<span class="new-mark-box">new</span>
 											<div class="overlay-content">
 												<ul>
-													
 													<li>
-														<a href="{{route('web.cart.add',$product->id)}}" title="Add cart">
+														<a herf="" data-id="{{$product['id']}}" title="Add cart" class="add_cart">
 															<i class="fa fa-shopping-cart"></i>
 														</a>
-													</li>
-													
+													</li>	
 												</ul>
 											</div>
 										</div>
@@ -67,7 +66,7 @@
 													<i class="fa fa-star-half-empty"></i>
 												</div>
 											</div>
-										<a href="{{route('web.product.single',['id'=>$product->id,'name'=>$product->name])}}">{{$product->name}}</a>
+											<a href="{{route('web.product.single',['id'=>$product->id,'name'=>$product->name])}}">{{$product->name}}</a>
 											<div class="price-box">
 												<span class="price">{{number_format($product->price)}} VND</span>
 											</div>

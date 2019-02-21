@@ -33,7 +33,7 @@
 								<li class="gategory-product-list col-lg-4 col-md-4 col-sm-6 col-xs-12" style="padding-right: 50px;">
 									<div class="single-product-item">
 										<div class="product-image">
-										<a href="{{route('web.product.single',['id'=>$product->id,'name'=>$product->name])}}"><img src="storage/{{$product->image}}" alt="product-image" /></a>
+											<a href="{{route('web.product.single',['id'=>$product->id,'name'=>$product->name])}}"><img src="storage/{{$product->image}}" alt="product-image" /></a>
 											<span class="new-mark-box">-{{$product->sale}}%</span>
 											<div class="overlay-content">
 												<ul>
@@ -42,7 +42,7 @@
 											</div>
 										</div>
 										<div class="product-info" style="padding: 15px;">
-										<a href="{{route('web.product.single',['id'=>$product->id,'name'=>$product->name])}}">{{$product->name}}</a>
+											<a href="{{route('web.product.single',['id'=>$product->id,'name'=>$product->name])}}">{{$product->name}}</a>
 											<div class="price-box">
 												<span class="price">{{number_format($product->price)}}VND</span>
 											</div>

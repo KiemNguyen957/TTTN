@@ -29,8 +29,8 @@ Route::get('/catelogs/{id}','ProductController@getListProducts')->name('web.cate
 
 
 Route::get('/cart','CartController@index')->name('web.cart');
-Route::get('/add-cart/{id}','CartController@getAddtoCart')->name('web.cart.add');
-Route::get('/delete-cart/{id}','CartController@deleteCart')->name('web.cart.delete');
+Route::post('/add-cart','CartController@getAddtoCart')->name('web.cart.add');
+Route::post('/delete-cart','CartController@deleteCart')->name('web.cart.delete');
 
 Route::get('/oder','OrderController@create')->name('web.oder');
 

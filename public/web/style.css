@@ -906,7 +906,7 @@ input.search-form[placeholder]:-ms-input-placeholder {
 	visibility: hidden;
 }
 .shopping-cart:hover .shipping-cart-overly{
-	height:428px;
+	height:auto;
 	opacity:1;
 	visibility: visible;
 }

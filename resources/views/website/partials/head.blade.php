@@ -9,7 +9,7 @@
     <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,300,600' rel='stylesheet' type='text/css'>
     <link href='http://fonts.googleapis.com/css?family=Bitter:400,700,400italic&amp;subset=latin,latin-ext' rel='stylesheet'
         type='text/css'>
-        <base href="{{asset('')}}">
+    <base href="{{asset('')}}">
     <!-- animate CSS -->
     <link rel="stylesheet" href="web/css/animate.css">
     <!-- FANCYBOX CSS -->
@@ -43,8 +43,7 @@
     <!-- MODERNIZR JS -->
     <script src="web/js/vendor/modernizr-2.6.2.min.js"></script>
     <link href="admin/lib/font-awesome/css/font-awesome.css" rel="stylesheet" />
-<!-- Custom styles for this template -->
+    <!-- Custom styles for this template -->
     <link href="admin/css/style.css" rel="stylesheet">
     <link href="admin/css/style-responsive.css" rel="stylesheet">
 </head>
-    

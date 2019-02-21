@@ -80,12 +80,11 @@
           
           <div class="registration">
             Bạn đã có tài khoản<br/>
-            <a class="" href="{{ route('web.get.login')}}">
+            <a class="" href="{{ route('web.index')}}">
               Đăng nhập
               </a>
           </div>
         </div>
-        
       </form>
     </div>
   </div>
