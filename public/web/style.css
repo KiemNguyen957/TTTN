@@ -3527,7 +3527,7 @@ div.wishlists-chart table tr td a:hover{
 	padding: 5px;
 	width: 100%;
 }
-.qtybutton{
+.qtybuttons{
 	background: #fbfbfb;
 	border: 1px solid #ccc;
 	color: #c0c0c0;
@@ -3543,14 +3543,14 @@ div.wishlists-chart table tr td a:hover{
 	text-align:center;
 }
 
-.qtybutton:hover{
+.qtybuttons:hover{
 	color:#000;
 }
-.inc{
+.incs{
 	float:right;
 	position:relative;
 }
-.inc:before{
+.incs:before{
 	position:absolute;
 	content:"+";
 	left:0;
@@ -3559,13 +3559,13 @@ div.wishlists-chart table tr td a:hover{
 	width:100%;
 	font-family:arial;
 }
-.dec{
+.decs{
 	float: left;
 	font-size: 28px;
 	line-height: 19px;
 	position:relative;
 }
-.dec:before{
+.decs:before{
 	position:absolute;
 	content:"-";
 	left:0;

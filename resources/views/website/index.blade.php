@@ -31,7 +31,7 @@
 				<!-- FEATURED-PRODUCTS-AREA START -->
 				<div class="featured-products-area">
 					<div class="center-title-area">
-						<h2 class="left-title">New Products</h2>
+						<h2 class="left-title">Sản phẩm mới</h2>
 					</div>
 					<div class="col-xs-12">
 						<div class="row">
@@ -49,23 +49,15 @@
 											<div class="overlay-content">
 												<ul>
 													<li>
-														<a herf="" data-id="{{$product['id']}}" title="Add cart" class="add_cart">
+														<a herf="" data-id="{{$product['id']}}" title="add to cart" class="add_cart">
 															<i class="fa fa-shopping-cart"></i>
 														</a>
 													</li>	
 												</ul>
 											</div>
 										</div>
-										<div class="product-info" style="padding: 0 30px;">
-											<div class="customar-comments-box">
-												<div class="rating-box">
-													<i class="fa fa-star"></i>
-													<i class="fa fa-star"></i>
-													<i class="fa fa-star"></i>
-													<i class="fa fa-star"></i>
-													<i class="fa fa-star-half-empty"></i>
-												</div>
-											</div>
+										<div class="product-info" style="padding:30px 5px; text-align:center">
+											
 											<a href="{{route('web.product.single',['id'=>$product->id,'name'=>$product->name])}}">{{$product->name}}</a>
 											<div class="price-box">
 												<span class="price">{{number_format($product->price)}} VND</span>
@@ -85,7 +77,7 @@
 				<!-- FEATURED-PRODUCTS-AREA START -->
 				<div class="featured-products-area">
 					<div class="center-title-area">
-						<h2 class="left-title">Sale</h2>
+						<h2 class="left-title">Khuyến mại</h2>
 					</div>
 					<div class="col-xs-12">
 						<div class="row">
@@ -101,7 +93,7 @@
 											<div class="overlay-content">
 												<ul>
 													<li>
-														<a href="#" title="Quick view">
+														<a href="" data-id="{{$product['id']}}" title="add to cart" class="add_cart">
 															<i class="fa fa-shopping-cart"></i>
 														</a>
 													</li>
@@ -109,18 +101,6 @@
 											</div>
 										</div>
 										<div class="product-info">
-											<div class="customar-comments-box">
-												<div class="rating-box">
-													<i class="fa fa-star"></i>
-													<i class="fa fa-star"></i>
-													<i class="fa fa-star"></i>
-													<i class="fa fa-star"></i>
-													<i class="fa fa-star"></i>
-												</div>
-												<div class="review-box">
-													<span>1 Review (s)</span>
-												</div>
-											</div>
 											<a href="single-product.html">{{$product->name}}</a>
 											<div class="price-box">
 												<span class="price">{{number_format(($product->price*(100-$product->sale)/100))}} VND</span>

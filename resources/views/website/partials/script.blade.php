@@ -81,13 +81,13 @@
                     $.each(data, function(index, value){
                         total+=value.qty;
                         total_price+=value.price;
+                        value.price = value.price.toLocaleString('en-US');
                         html+='<div class="shipping-item"><span class="cross-icon"><a href="" class="delete_cart" data-delete="'+value.item.id+'"><i class="fa fa-times-circle"></i></a></span>';
 						html+='<div class="shipping-item-image"><a href="#"><img style="width:40px;" src="storage/'+value.item.image+'" alt="shopping image" /></a></div>';
 						html+='<div class="shipping-item-text"><span>'+value.qty+'<span class="pro-quan-x">x</span>';
 						html+='<a href="#" style="text-transform: lowercase;" title="" class="pro-cat">'+value.item.name+'</a></span>';
                         html+='<p>'+value.price+'<sup>đ</sup></p></div></div>';
                     });
-                    console.log(total_price);
                     $('.list_product_cart').html(html);
                     $('.ajax-cart-quantity').html(total);
                     $('.total_price').html(total_price.toLocaleString('de-DE')); 
@@ -113,28 +113,42 @@
                     console.log(data);
                     if(data!=""){
                         var html="";
+                        var html_cart="";
                         var total= 0;
                         var total_price=0;
                         $.each(data, function(index, value){
-                        console.log(value.price);
                         total+=value.qty;
                         total_price+=value.price;
+                        value.price = value.price.toLocaleString('en-US');
                         html+='<div class="shipping-item"><span class="cross-icon"><a href="" class="delete_cart" data-delete="'+value.item.id+'"><i class="fa fa-times-circle"></i></a></span>';
 						html+='<div class="shipping-item-image"><a href="#"><img style="width:40px;" src="storage/'+value.item.image+'" alt="shopping image" /></a></div>';
 						html+='<div class="shipping-item-text"><span>'+value.qty+'<span class="pro-quan-x">x</span>';
 						html+='<a href="#" style="text-transform: lowercase;" title="" class="pro-cat">'+value.item.name+'</a></span>';
                         html+='<p>'+value.price+'<sup>đ</sup></p></div></div>';
+                        //
+                        html_cart+='<tr><td class="cart-product"><a href="#"><img alt="Blouse" style="width:50px;" src="storage/'+value.item.image+'"></a></td>';
+                        html_cart+='<td class="cart-description"><p class="product-name"><a href="#">'+value.item.name+'</a></p>';
+                        html_cart+='<small>'+value.item.operating_system+'</small>';
+                        html_cart+='<small>'+value.item.cpu+'</small></td>';
+                        html_cart+='<td class="cart-unit"><ul class="price text-right"><li class="price">'+value.item.price+'</li></ul></td>';
+                        html_cart+='<td class="cart_quantity text-center">'+value.qty+'</td>';
+                        html_cart+='<td class="cart-delete text-center"><span><a href="" class="delete_cart" data-delete="'+value.item.id+'" title="Delete"><i class="fa fa-trash-o"></i></a></span></td>';
+                        html_cart+='<td class="cart-total"><span class="price">'+total_price+'</span></td></tr>';
                         });
+                        console.log(html_cart);
+                        $('.show_cart').html(html_cart);
                         $('.list_product_cart').html(html);
                         $('.ajax-cart-quantity').html(total);
-                        $('.total_price').html(total_price.toLocaleString('de-DE')); 
+                        $('.total_price').html(total_price.toLocaleString('en-US')); 
                         deleteCart();
+                        
 
                     }
                     else{
                         $('.ajax-cart-quantity').html(0);
                         $('.list_product_cart').html('<div class="shipping-item"><p>Giỏ hàng trống</p></div>');
                         $('.total_price').html(0);
+                        $('.show_cart').html('<tr><td colspan="6" style="text-align: center">Giỏ hàng trống</td></tr>');
                     }
                 },
             });
@@ -143,7 +157,22 @@
 
     $(document).ready(function(){
         deleteCart();
+   
+    //
+    $('.incs').click(function()
+    {
+        debugger
+        var list_qty = $('.qty_cart'); 
+        for(var i=0;i<list_qty.length; i++){
+            console.log(list_qty);  
+            console.log(list_qty[i].html());
+        }
     });
+    // $('.decs').click(function()
+    // {
+        
+    // });
+});
 </script>
 @if (session('error'))
     <script>

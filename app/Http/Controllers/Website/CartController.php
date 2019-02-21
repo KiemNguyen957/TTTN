@@ -35,6 +35,9 @@ class CartController extends Controller
 			if(count($cart->items)>=0){
 				echo json_encode($cart->items);
 			}
+			if(count($cart->items)==0){
+				Session::forget('cart');
+			}
 		}
     }
     public function deleteallCart(){
