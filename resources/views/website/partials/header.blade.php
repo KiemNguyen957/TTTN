@@ -83,8 +83,9 @@
 						</a>
 						<div class="shipping-cart-overly">
 								{{csrf_field()}}
-							@foreach ($list_product as $crt)
+							
 							<div class="list_product_cart">
+								@foreach ($list_product as $crt)
 									<div class="shipping-item">
 											<span class="cross-icon">
 												<a class="delete_cart" data-delete="{{$crt['item']['id']}}">
@@ -107,11 +108,12 @@
 												</p>
 											</div>
 										</div>
+								@endforeach
 							</div>
-							@endforeach
+							
 							<div class="shipping-total-bill">
 								<div class="total-shipping-prices">
-									<span class="shipping-total"><span id="total_price">{{number_format($cart->totalPrice)}}</span>
+									<span class="shipping-total"><span class="total_price">{{number_format($cart->totalPrice)}}</span>
 										<sup>đ</sup>
 									</span>
 									<span>Tổng tiền: </span>
@@ -126,22 +128,21 @@
 							<b>My Cart</b>
 							<span class="ajax-cart-quantity">0</span>
 						</a>
-						<div class="shipping-cart-overly">
-							<div class="shipping-item">
-								<p>Giỏ hàng trống</p>
-							</div>
-							<div class="shipping-total-bill">
-								<div class="total-shipping-prices">
-									<span class="shipping-total">0 đ</span>
-									<span>Tổng tiền</span>
+						
+							<div class="shipping-cart-overly">
+								<div class="list_product_cart">
+									<div class="shipping-item">
+										<p>Giỏ hàng trống</p>
+									</div>
 								</div>
+								<div class="shipping-total-bill">
+									<div class="total-shipping-prices">
+										<span class="shipping-total"><span class="total_price">0</span><sup>đ</sup></span>
+										<span>Tổng tiền</span>
+									</div>
+								</div>
+								
 							</div>
-							<div class="shipping-checkout-btn">
-								<a href="checkout.html">Check out
-									<i class="fa fa-chevron-right"></i>
-								</a>
-							</div>
-						</div>
 					</div>
 					@endif
 				</div>

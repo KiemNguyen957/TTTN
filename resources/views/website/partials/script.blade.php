@@ -29,14 +29,17 @@
 <script>
     var login = document.getElementById('login-page');
     var body = document.getElementById('body');
+
     function show(){
         login.classList.add('show');
         body.style.overflow="hidden";
     }
+
     function hidden_login(){
         login.classList.remove('show');
         body.style.overflow="visible";
     }
+
     setTimeout(function(){
         document.getElementById('popup').style.display="none";
     },5000);
@@ -71,46 +74,75 @@
                 dataType: 'json',
                 data: {id:id, _token:_token},
                 success: function(data){
-                    //console.log(data);
+                    console.log(data);
                     var html="";
                     var total= 0;
                     var total_price=0;
-                    $.each(data,function(index, value){
-                        console.log(value.price);
+                    $.each(data, function(index, value){
                         total+=value.qty;
                         total_price+=value.price;
-                        html+='<div class="shipping-item"><span class="cross-icon"><a href="" class="delete_cart" data-deltete="'+value.item.id+'"><i class="fa fa-times-circle"></i></a></span>';
+                        html+='<div class="shipping-item"><span class="cross-icon"><a href="" class="delete_cart" data-delete="'+value.item.id+'"><i class="fa fa-times-circle"></i></a></span>';
 						html+='<div class="shipping-item-image"><a href="#"><img style="width:40px;" src="storage/'+value.item.image+'" alt="shopping image" /></a></div>';
 						html+='<div class="shipping-item-text"><span>'+value.qty+'<span class="pro-quan-x">x</span>';
 						html+='<a href="#" style="text-transform: lowercase;" title="" class="pro-cat">'+value.item.name+'</a></span>';
                         html+='<p>'+value.price+'<sup>đ</sup></p></div></div>';
                     });
                     console.log(total_price);
-                    $('.list_prodcut_cart').html(html);
+                    $('.list_product_cart').html(html);
                     $('.ajax-cart-quantity').html(total);
-                    $('#total_price').html(total_price.toLocaleString('de-DE'));
-                    
+                    $('.total_price').html(total_price.toLocaleString('de-DE')); 
+                    deleteCart();
                 },
             });
         });
     });
 
     //delete cart
-    $('.delete_cart').click(function(event){
-        event.preventDefault();
-        var id = $(this).data('delete');
-       // alert(id);
-        var url = "{{route('web.cart.delete')}}";
-        var _token = $('input[name="_token"]').val();
-        $.ajax({
-            url: url,
-            method: "post",
-            data: {id:id, _token:_token},
-            success: function(data){
-                console.log(data);
-                alert(data);
-            },
+    function deleteCart(){
+        $('.delete_cart').click(function(event){
+            event.preventDefault();
+            var id = $(this).data('delete');
+            var url = "{{ route('web.cart.delete') }}";
+            var _token = $('input[name="_token"]').val();
+            $.ajax({
+                url: url,
+                method: "post",
+                dataType: 'json',
+                data: {id:id, _token:_token},
+                success: function(data){
+                    console.log(data);
+                    if(data!=""){
+                        var html="";
+                        var total= 0;
+                        var total_price=0;
+                        $.each(data, function(index, value){
+                        console.log(value.price);
+                        total+=value.qty;
+                        total_price+=value.price;
+                        html+='<div class="shipping-item"><span class="cross-icon"><a href="" class="delete_cart" data-delete="'+value.item.id+'"><i class="fa fa-times-circle"></i></a></span>';
+						html+='<div class="shipping-item-image"><a href="#"><img style="width:40px;" src="storage/'+value.item.image+'" alt="shopping image" /></a></div>';
+						html+='<div class="shipping-item-text"><span>'+value.qty+'<span class="pro-quan-x">x</span>';
+						html+='<a href="#" style="text-transform: lowercase;" title="" class="pro-cat">'+value.item.name+'</a></span>';
+                        html+='<p>'+value.price+'<sup>đ</sup></p></div></div>';
+                        });
+                        $('.list_product_cart').html(html);
+                        $('.ajax-cart-quantity').html(total);
+                        $('.total_price').html(total_price.toLocaleString('de-DE')); 
+                        deleteCart();
+
+                    }
+                    else{
+                        $('.ajax-cart-quantity').html(0);
+                        $('.list_product_cart').html('<div class="shipping-item"><p>Giỏ hàng trống</p></div>');
+                        $('.total_price').html(0);
+                    }
+                },
+            });
         });
+    }
+
+    $(document).ready(function(){
+        deleteCart();
     });
 </script>
 @if (session('error'))

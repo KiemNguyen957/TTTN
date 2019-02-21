@@ -25,18 +25,16 @@ class CartController extends Controller
 		}
     }
     public function deleteCart(Request $request){
+		
 		if($request->ajax()){
-			$id = $request->post('id'); 
+			$id = $request->post('id');
 			$oldCart = Session::has('cart')?Session::get('cart'):null;
 			$cart = new Cart($oldCart);
 			$cart->removeItem($id);
-			if(count($cart->items)>0){
-				Session::put('cart',$cart);
-			}else{
-				Session::forget('cart');
+			Session::put('cart',$cart);
+			if(count($cart->items)>=0){
+				echo json_encode($cart->items);
 			}
-			$cart = Session('cart');
-			print_r(json_encode($cart->items));
 		}
     }
     public function deleteallCart(){
