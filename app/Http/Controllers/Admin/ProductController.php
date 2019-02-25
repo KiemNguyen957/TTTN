@@ -47,7 +47,7 @@ class ProductController extends Controller
      */
     public function store(Request $request)
     {
-        $request->merge(['slug' => changeTitle($request->name)]);
+        $request->merge(['slug' => str_slug($request->name,'-')]);
         $allow_type=['jpg','jpeg','png','svg','gif'];
         $data=$request->except(['image']);
         if($request->hasFile('image')){
@@ -106,7 +106,7 @@ class ProductController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $request->merge(['slug' => changeTitle($request->name)]);
+        $request->merge(['slug' => str_slug($request->name,'-')]);
         $product = Product::findOrFail($id);
         if(isset($request->image)){
             $allow_type=['jpg','jpeg','png','svg','gif'];

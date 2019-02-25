@@ -11,5 +11,6 @@
 	@include('website.partials.footer')
 	{{-- Script --}}
 	@include('website.partials.script')
+	@yield('js')
 </body>
 </html>

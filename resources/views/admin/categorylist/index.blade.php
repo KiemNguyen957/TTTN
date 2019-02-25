@@ -8,7 +8,7 @@
           <div class="col-md-12">
             <div class="content-panel">
               <table class="table table-striped table-advance table-hover">
-                <div class="col-md-12"><h4 class="col-md-6"><i class="fa fa-angle-right"></i> Danh mục sản phẩm</h4>
+              <div class="col-md-12"><h4 class="col-md-6"><i class="fa fa-angle-right"></i> Danh mục sản phẩm <span style="color: tomato">@if(session('_error')){{session('_error')}}@endif</span></h4>
                 <a href="{{route('category.create')}}" class="btn btn-theme03 pull-right">+Thêm danh mục</a></div>
                 <hr>
                 <thead>

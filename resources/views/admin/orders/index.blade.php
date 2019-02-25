@@ -14,8 +14,10 @@
                     <th>STT</th>
                     <th>Mã hóa đơn</th>
                     <th>Khách hàng</th>
+                    <th>Địa chỉ</th>
+                    <th>Số điện thoại</th>
                     <th>Ngày tạo</th>
-                    <th>Tổng tiền</th>
+                    <th>Tổng tiền(VND)</th>
                     <th></th>
                   </tr>
                 </thead>
@@ -25,8 +27,10 @@
                     <td>{{$index +1}}</td>
                     <td>{{$order->code}}</td>
                     <td>{{$order->user->email}}</td>
+                    <td>{{$order->address}}</td>
+                    <td>{{$order->phone}}</td>
                     <td>{{$order->created_at}}</td>
-                    <td>{{$order->unit_price}}</td>
+                    <td>{{ number_format($order->total_price) }}</td>
                     <td>
                     <a href="{{route('orders.show',$order)}}" title="xem chi tiết" class="btn btn-primary btn-xs"><i class="fa fa-eye"></i></a>
                     <form action="{{route('orders.destroy',$order)}}" method="POST" style="display:inline-block">

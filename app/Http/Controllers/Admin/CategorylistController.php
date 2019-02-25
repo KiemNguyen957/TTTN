@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Categorylist;
+use App\Product;
 
 class CategorylistController extends Controller
 {
@@ -41,7 +42,7 @@ class CategorylistController extends Controller
      */
     public function store(Request $request)
     {
-        $request->merge(['slug' => changeTitle($request->name)]);
+        $request->merge(['slug' => str_slug($request->name,'-')]);
         Categorylist::create($request->all());
         return redirect()->route('category.index');
     }
@@ -78,7 +79,7 @@ class CategorylistController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $request->merge(['slug' => changeTitle($request->name)]);
+        $request->merge(['slug' => str_slug($request->name,'-')]);
         $category = Categorylist::findOrFail($id);
         $category->update($request->all());
         return redirect()->route('category.index');
@@ -93,7 +94,13 @@ class CategorylistController extends Controller
     public function destroy($id)
     {
         $category = Categorylist::findOrFail($id);
-        $category->delete();
+        $product = Product::where('category_id',$id)->get();
+        if(count($product)==0){
+            $category->delete();
+        }
+        else{
+            return redirect()->back()->with('_error','Không thể xóa');
+        }
         return redirect()->route('category.index');
     }
 }

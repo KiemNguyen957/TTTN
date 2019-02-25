@@ -14,8 +14,9 @@ class ProductsTableSeeder extends Seeder
     {
         DB::table('products')->insert([
             'name'=>'Samsung Galaxy A8 Star',
+            'slug'=>'samsung-galaxy-a8-star',
             'image'=>'produts/wkEDB6XqmgC11xvjGieLm5uMo0P1kzKeAducyqAH.jpeg',
-            'price'=>'8.990.000',
+            'price'=>'8990000',
             'sale'=>0,
             'promotion'=>'Cơ hội trúng 61 xe Wave Alpha ',
             'screen'=>'Super AMOLED, 6.3", Full HD+',
@@ -28,6 +29,7 @@ class ProductsTableSeeder extends Seeder
             'pin'=>'3700 mAh, có sạc nhanh',
             'description'=>'Samsung Galaxy A8 Star là chiếc điện thoại thứ 2 của Samsung chạy trên nền tảng Android Go siêu nhẹ được tối ưu dành riêng cho những chiếc máy giá rẻ',
             'category_id'=>2,
+            
         ]);
         factory(Product::class,100)->create();
     }

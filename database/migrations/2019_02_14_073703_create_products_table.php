@@ -16,6 +16,7 @@ class CreateProductsTable extends Migration
         Schema::create('products', function (Blueprint $table) {
             $table->increments('id');
             $table->string('name');
+            $table->string('slug')->nullable();
             $table->string('image');
             $table->string('price');
             $table->integer('sale')->nullable();
@@ -31,7 +32,7 @@ class CreateProductsTable extends Migration
             $table->string('description')->nullable();
             $table->integer('category_id')->unsigned();
             $table->foreign('category_id')->references('id')->on('categorylist')->onDelete('cascade');
-            $table->string('slug')->nullable();
+            
             $table->timestamps();
         });
     }

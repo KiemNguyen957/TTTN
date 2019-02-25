@@ -9,22 +9,25 @@ use App\Categorylist;
 
 class ProductController extends Controller
 {
-    public function getSingle_product($id,$name){
+    public function getSingle_product($slug){
         
-        $product = Product::findOrFail($id);
-        $products_category = Product::where('category_id','=',$product->category_id)->where('id','!=',$product->id)->inRandomOrder()->paginate(4);
+        $product = Product::where('slug','=',$slug)->first();
+        $products_category = Product::where('category_id','=',$product->category_id)->where('slug','!=',$product->slug)->inRandomOrder()->paginate(4);
         return view('website.single-product',compact(['product','products_category']));
     }
     public function getProducts()
     {
-        $categorylist = Categorylist::all();
-        return view('website.products',compact('categorylist'));
+        $categorylists = Categorylist::all();
+        //dd($categorylist);
+        return view('website.products',compact('categorylists'));
     }
-    public function getListProducts($id)
+    public function getListProducts($slug)
     {
-        $categorylist = Categorylist::all();
+        $categorylists = Categorylist::all();
+        $categorylist = Categorylist::where('slug','=',$slug)->first();
+        //dd($categorylist->id);
         // $category = Categorylist::FindOrFail($id);
-        $listproduct = Product::where('category_id',$id)->paginate(9);
-        return view('website.products',compact(['categorylist','listproduct']));
+        $listproduct = Product::where('category_id',$categorylist->id)->paginate(9);
+        return view('website.products',compact(['categorylist','listproduct','categorylists']));
     }
 }

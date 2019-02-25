@@ -52,7 +52,9 @@ class OrderController extends Controller
     public function show($id)
     {
         $order = Order::FindOrFail($id);
-        return view('admin.orders.show');
+        $detail =json_decode($order->detail);
+        //dd($detail);
+        return view('admin.orders.show',compact(['order','detail']));
     }
 
     /**

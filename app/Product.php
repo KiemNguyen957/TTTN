@@ -9,6 +9,7 @@ class Product extends Model
     protected $table='products';
     protected $fillable=[
         'name',
+        'slug',
         'image',
         'price',
         'sale',
@@ -23,7 +24,6 @@ class Product extends Model
         'pin',
         'description',
         'category_id',
-        'slug',
     ];
     public function categorylist()
     {

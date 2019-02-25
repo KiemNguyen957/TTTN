@@ -20,8 +20,7 @@ class CartController extends Controller
             $cart = new Cart($oldCart);
             $cart->addItem($product,$id);
 			$request->session()->put('cart',$cart);
-			echo json_encode($cart->items);
-            // return $cart->totalQuantity;        
+			echo json_encode($cart->items);      
 		}
     }
     public function deleteCart(Request $request){
@@ -30,12 +29,26 @@ class CartController extends Controller
 			$id = $request->post('id');
 			$oldCart = Session::has('cart')?Session::get('cart'):null;
 			$cart = new Cart($oldCart);
-			$cart->removeItem($id);
+			$cart->removeItems($id);
 			Session::put('cart',$cart);
 			if(count($cart->items)>=0){
 				echo json_encode($cart->items);
 			}
 			if(count($cart->items)==0){
+				Session::forget('cart');
+			}
+		}
+	}
+	public function deleteOneCart(Request $request){
+		if($request->ajax()){
+			$id = $request->post('id');
+			$oldCart = Session::has('cart')?Session::get('cart'):null;
+			$cart = new Cart($oldCart);
+			$cart->removeItem($id);
+			if(count($cart->items)>=0){
+				Session::put('cart',$cart);
+				echo json_encode($cart->items);
+			}if(count($cart->items)==0){
 				Session::forget('cart');
 			}
 		}

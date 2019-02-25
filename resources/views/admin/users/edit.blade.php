@@ -1,9 +1,14 @@
-@extends('admin.layout.master') @section('title','Admin | Người dùng') @section('libcss')
+@extends('admin.layout.master')
+@section('title','Admin | Người dùng') 
+@section('libcss')
 <link rel="stylesheet" type="text/css" href="admin/lib/bootstrap-fileupload/bootstrap-fileupload.css" />
 <link rel="stylesheet" type="text/css" href="admin/lib/bootstrap-datepicker/css/datepicker.css" />
 <link rel="stylesheet" type="text/css" href="admin/lib/bootstrap-daterangepicker/daterangepicker.css" />
 <link rel="stylesheet" type="text/css" href="admin/lib/bootstrap-timepicker/compiled/timepicker.css" />
-<link rel="stylesheet" type="text/css" href="admin/lib/bootstrap-datetimepicker/datertimepicker.css" /> @endsection @section('users_active','active') @section('content')
+<link rel="stylesheet" type="text/css" href="admin/lib/bootstrap-datetimepicker/datertimepicker.css" /> 
+@endsection 
+@section('users_active','active') 
+@section('content')
 <section id="main-content">
   <section class="wrapper site-min-height">
     <div class="row mt">

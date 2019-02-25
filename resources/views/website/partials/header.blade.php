@@ -157,7 +157,7 @@
 								<a href="{{route('web.index')}}">Trang chủ</a>
 							</li>
 							<li class="@yield('phone_active')">
-								<a href="{{route('web.catelogs',1)}}">Điện thoại</a>
+								<a href="{{route('web.products')}}">Điện thoại</a>
 							</li>
 							<li>
 								<a href="#">Tin tức</a>

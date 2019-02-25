@@ -1,6 +1,5 @@
 @extends('website.layout.master')
-@section('title','Trang chủ')
-@section('home_active','active')
+@section('title','Sản phẩm')
 @section('content')
 	<!-- MAIN-CONTENT-SECTION START -->
 	<section class="main-content-section">
@@ -9,15 +8,6 @@
 				<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
 					<!-- BSTORE-BREADCRUMB START -->
 					<div class="bstore-breadcrumb">
-						<a href="index.html">Điện thoại
-							<span>
-								<i class="fa fa-caret-right"></i>
-							</span>
-						</a>
-						<span>
-							<i class="fa fa-caret-right"> </i>
-						</span>
-						<a href="shop-gird.html">{{$product->categorylist->name}}</a>
 						<span>{{$product->name}}</span>
 					</div>
 					<!-- BSTORE-BREADCRUMB END -->
@@ -59,12 +49,7 @@
 										<i class="fa fa-star"></i>
 										<i class="fa fa-star-half-empty"></i>
 									</div>
-									<div class="read-reviews">
-										<a href="#">Read reviews (1)</a>
-									</div>
-									<div class="write-review">
-										<a href="#">Write a review</a>
-									</div>
+									
 								</div>
 								<div class="single-product-condition">
 									<p>Reference:
@@ -81,14 +66,7 @@
                                 <p>{{$product->promotion}}</p>
 
 								</div>
-								<div class="single-product-quantity">
-									<p class="small-title">Số lượng</p>
-									<div class="cart-quantity">
-										<div class="cart-plus-minus-button single-qty-btn">
-											<input class="cart-plus-minus sing-pro-qty" type="text" name="qtybutton" value="0">
-										</div>
-									</div>
-								</div>
+								
 
 
 								<div class="single-product-add-cart">
@@ -211,12 +189,12 @@
                             <ul>
                                 @foreach($products_category as $product_cat)
                                 <li>
-                                    <a href="{{route('web.product.single',['id'=>$product_cat->id,'name'=>$product_cat->name])}}">
+                                    <a href="{{route('web.product.single',$product_cat->slug)}}">
                                     <img src="storage/{{$product_cat->image}}" style="max-width:80px" alt="" />
                                     </a>
                                     <div class="r-sidebar-pro-content">
                                         <h5>
-                                            <a href="{{route('web.product.single',['id'=>$product_cat->id,'name'=>$product_cat->name])}}">{{$product_cat->name}}</a>
+                                            <a href="{{route('web.product.single',$product_cat->slug)}}">{{$product_cat->name}}</a>
                                         </h5>
                                     <p>{{number_format($product->price)}} VND</p>
                                     </div>

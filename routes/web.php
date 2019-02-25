@@ -23,15 +23,16 @@ Route::get('/logout','Auth\LogoutController@getLogout')->name('web.get.logout');
 
 Route::group(['prefix' => 'products'],function(){
     Route::get('/','ProductController@getProducts')->name('web.products');
-    Route::get('/{id}/{name}','ProductController@getSingle_product')->name('web.product.single');
+    Route::get('/{slug}','ProductController@getSingle_product')->name('web.product.single');
 });
-Route::get('/catelogs/{id}','ProductController@getListProducts')->name('web.catelogs');
+Route::get('/catelogs/{slug}','ProductController@getListProducts')->name('web.catelogs');
 
 
 Route::get('/cart','CartController@index')->name('web.cart');
 Route::post('/add-cart','CartController@getAddtoCart')->name('web.cart.add');
 Route::post('/delete-cart','CartController@deleteCart')->name('web.cart.delete');
+Route::post('/delete-one','CartController@deleteOneCart')->name('web.cart.deleteone');
 
-Route::get('/oder','OrderController@create')->name('web.oder');
+Route::post('/order','OrderController@create')->name('web.order');
 
 

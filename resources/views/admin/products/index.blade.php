@@ -2,7 +2,7 @@
 @section('title','Admin | Sản phẩm')
 @section('product_active','active')
 @section('content')
-<section id="main-content">
+  <section id="main-content">
       <section class="wrapper site-min-height">
         <div class="row mt">
           <div class="col-md-12">
@@ -55,5 +55,5 @@
         </div>
         <!-- /row -->
       </section>
-    </section>
+  </section>
 @endsection

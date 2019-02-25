@@ -9,10 +9,12 @@
 						<div class="product-single-sidebar">
 							<span class="sidebar-title">Danh mục</span>
 							<ul class="">
-								@foreach($categorylist as $category)
+								
+								@foreach($categorylists as $category)
+								
 								<li>
 									<i class=""></i>
-									<a @if($category->id==$listproduct[0]->category_id){{'style=color:#FF4F4F'}}@endif href="{{route('web.catelogs',$category)}}">{{$category->name}}</a>
+								<a @if($categorylist->id==$category->id){{'style=color:red'}}@endif href="{{route('web.catelogs',$category->slug)}}">{{$category->name}}</a>
 								</li>
 								@endforeach
 							</ul>
@@ -33,32 +35,42 @@
 								<li class="gategory-product-list col-lg-4 col-md-4 col-sm-6 col-xs-12" style="padding-right: 50px;">
 									<div class="single-product-item">
 										<div class="product-image">
-											<a href="{{route('web.product.single',['id'=>$product->id,'name'=>$product->name])}}"><img src="storage/{{$product->image}}" alt="product-image" /></a>
-											<span class="new-mark-box">-{{$product->sale}}%</span>
+											<a href="{{route('web.product.single',$product->slug)}}"><img src="storage/{{$product->image}}" alt="product-image" /></a>
+											@if($product->sale!=0)<span class="new-mark-box">-{{$product->sale}}%</span>@endif
 											<div class="overlay-content">
 												<ul>
-													<li><a href="{{route('web.cart.add',$product->id)}}" title="add to cart"><i class="fa fa-shopping-cart"></i></a></li>
+													<li><a href="" data-id="{{$product['id']}}" title="add to cart" class="add_cart"><i class="fa fa-shopping-cart"></i></a></li>
 												</ul>
 											</div>
 										</div>
 										<div class="product-info" style="padding: 15px;">
-											<a href="{{route('web.product.single',['id'=>$product->id,'name'=>$product->name])}}">{{$product->name}}</a>
+											<a href="{{route('web.product.single',$product->slug)}}">{{$product->name}}</a>
 											<div class="price-box">
-												<span class="price">{{number_format($product->price)}}VND</span>
+												<span class="price">{{number_format(($product->price*(100-$product->sale)/100))}} VND</span>
+												@if($product->sale!=0)<span class="old-price">{{number_format($product->price)}} vnd</span>@endif
 											</div>
 										</div>
 									</div>									
 								</li>
 								@endforeach	
-								@endif					
+													
 							</ul>
 						</div>
 					</div>
 					{{$listproduct->links()}}
+					@endif
 					<!-- ALL GATEGORY-PRODUCT END -->
 					
 				</div>
 			</div>
 		</div>
 	</section>
+@endsection
+@section('js')
+<script>
+    $(document).ready(function(){
+        addCart();
+        deleteCart();
+    });
+</script>
 @endsection
