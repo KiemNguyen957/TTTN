@@ -53,8 +53,5 @@ class CartController extends Controller
 			}
 		}
     }
-    public function deleteallCart(){
-        Session::forget('cart');
-        return redirect()->back();
-    }
+
 }

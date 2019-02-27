@@ -15,7 +15,12 @@
               <div class="row content-panel">
               <form action="{{ route('products.store') }}" method="post" class="form-horizontal" enctype="multipart/form-data">
               {{csrf_field()}} 
+              @if(!$errors->isEmpty())
+                    <div class="text-red">
+                        {{$errors->first()}}
+                    </div>@endif
                 <div class="col-md-6  centered" style="padding-top: 55px;">
+                  
                   <div class="form-group last">
                     <label class="control-label col-md-4">Hình ảnh</label>
                       <div class="col-md-8">

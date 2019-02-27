@@ -6,5 +6,4 @@
 <script src="admin/lib/jquery.nicescroll.js" type="text/javascript"></script>
 <!--common script for all pages-->
 <script src="admin/lib/common-scripts.js"></script>
-<!--script for this page-->
-<!--custom switch-->
+

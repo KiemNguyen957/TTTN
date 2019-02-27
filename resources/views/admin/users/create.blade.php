@@ -11,7 +11,10 @@
         <div class="row content-panel">
         <form action="{{ route('users.store')}}" method="post" class="form-horizontal" enctype="multipart/form-data">
         {{csrf_field()}}
-        
+        @if(!$errors->isEmpty())
+        <div class="text-red">
+            {{$errors->first()}}
+        </div>@endif
           <div class="col-md-4 centered">
             <div class="profile-pic right-divider" style="margin-top:120px">
               <div class="fileupload fileupload-new" data-provides="fileupload">

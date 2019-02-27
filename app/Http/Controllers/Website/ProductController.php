@@ -17,17 +17,18 @@ class ProductController extends Controller
     }
     public function getProducts()
     {
-        $categorylists = Categorylist::all();
+        $catelogs = Categorylist::all();
         //dd($categorylist);
-        return view('website.products',compact('categorylists'));
+        $allproduct = Product::inRandomOrder()->paginate(9);
+        return view('website.products',compact(['catelogs','allproduct']));
     }
     public function getListProducts($slug)
     {
-        $categorylists = Categorylist::all();
-        $categorylist = Categorylist::where('slug','=',$slug)->first();
+        $catelogs = Categorylist::all();
+        $cat = Categorylist::where('slug','=',$slug)->first();
         //dd($categorylist->id);
         // $category = Categorylist::FindOrFail($id);
-        $listproduct = Product::where('category_id',$categorylist->id)->paginate(9);
-        return view('website.products',compact(['categorylist','listproduct','categorylists']));
+        $listproduct = Product::where('category_id',$cat->id)->paginate(9);
+        return view('website.products',compact(['cat','listproduct','catelogs']));
     }
 }

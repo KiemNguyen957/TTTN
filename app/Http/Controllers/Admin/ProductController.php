@@ -7,6 +7,7 @@ use App\Http\Controllers\Controller;
 use App\Product;
 use App\Categorylist;
 use Illuminate\Support\Facades\Storage;
+use App\Http\Requests\ProductRequest;
 
 
 class ProductController extends Controller
@@ -45,7 +46,7 @@ class ProductController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(ProductRequest $request)
     {
         $request->merge(['slug' => str_slug($request->name,'-')]);
         $allow_type=['jpg','jpeg','png','svg','gif'];
@@ -104,7 +105,7 @@ class ProductController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(ProductRequest $request, $id)
     {
         $request->merge(['slug' => str_slug($request->name,'-')]);
         $product = Product::findOrFail($id);

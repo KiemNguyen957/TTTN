@@ -29,7 +29,7 @@ class CreateProductsTable extends Migration
             $table->string('memory');
             $table->string('memory_card');
             $table->string('pin');
-            $table->string('description')->nullable();
+            $table->longText('description')->nullable();
             $table->integer('category_id')->unsigned();
             $table->foreign('category_id')->references('id')->on('categorylist')->onDelete('cascade');
             

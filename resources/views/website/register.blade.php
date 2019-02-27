@@ -28,6 +28,11 @@
       <form class="form-login form-register" action="{{route('web.post.register')}}" method="post" style="text-align: center;max-width:500px;">
         {{csrf_field()}} 
         <h2 class="form-login-heading">Đăng ký</h2>
+        @if(!$errors->isEmpty())
+            <div class="text-red">
+                {{$errors->first()}}
+            </div>
+        @endif
         <div class="login-wrap">
             <div class="form-group col-lg-12">
                 <label class="col-lg-3 control-label regist-lable">Họ và tên</label>
@@ -50,7 +55,7 @@
             <div class="form-group col-lg-12">
                 <label class="col-lg-3 control-label">Xác nhận mật khẩu</label>
                 <div class="col-lg-9">  
-                    <input type="text" placeholder=" " name="rspassword" class="form-control">
+                    <input type="text" placeholder="Password confirmation" name="password_confirmation" class="form-control">
                 </div>
             </div>
             <div class="form-group col-lg-12">
@@ -67,7 +72,7 @@
             <div class="form-group col-lg-12">
                 <label class="col-lg-3 control-label regist-lable">Số điện thoại</label>
                 <div class="col-lg-9">  
-                    <input type="text" placeholder=" " name="phone" class="form-control">
+                    <input type="text" placeholder="Phone number" name="phone" class="form-control">
                 </div>
             </div>
             <label class="col-lg-12 control-label regist-lable text-red">

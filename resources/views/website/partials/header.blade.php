@@ -9,7 +9,7 @@
 						<ul class="list-inline">
 							@if(null != Auth::check())
 							<li>
-								<a href="">{{Auth::user()->email}}</a>
+							<a href="{{route('profile.edit',Auth::user()->id)}}">{{Auth::user()->email}}</a>
 							</li>
 							<li>
 								<a href="{{route('web.get.logout')}}">Đăng xuất</a>
@@ -40,7 +40,7 @@
 				<!-- LOGO START -->
 				<div class="logo">
 					<a href="{{route('web.index')}}">
-						<img src="web/img/logo.png" alt="bstore logo" />
+						<img src="web/img/logo-2.png" alt="bstore logo"  style="max-width: 185px;"/>
 					</a>
 				</div>
 				<!-- LOGO END -->
@@ -52,10 +52,11 @@
 				<!-- HEADER-RIGHT-CALLUS END -->
 				<!-- CATEGORYS-PRODUCT-SEARCH START -->
 				<div class="categorys-product-search">
-					<form action="#" method="get" class="search-form-cat">
+				<form action="{{route('web.search')}}" method="post" class="search-form-cat">
+						{{csrf_field()}}
 						<div class="search-product form-group">
-							<input type="text" class="form-control search-form" name="s" placeholder="Tìm kiếm ... " style="width:100%" />
-							<button class="search-button" value="Search" name="s" type="submit" style="height: 100%;">
+							<input type="text" class="form-control search-form" name="search_input" placeholder="Tìm kiếm ... " style="width:100%" />
+							<button class="search-button" value="Search" type="submit" style="height: 100%;">
 								<i class="fa fa-search"></i>
 							</button>
 						</div>
@@ -93,14 +94,14 @@
 												</a>
 											</span>
 											<div class="shipping-item-image">
-												<a href="#">
+												
 													<img style="width:40px;" src="storage/{{$crt['item']['image']}}" alt="shopping image" />
-												</a>
+												
 											</div>
 											<div class="shipping-item-text">
 												<span>{{$crt['qty']}}
 													<span class="pro-quan-x">x</span>
-													<a href="#" style="text-transform: lowercase;" title="{{$crt['item']['name']}}" class="pro-cat">{{shorten_string($crt['item']['name'],2)}}</a>
+													<span style="text-transform: lowercase;color:#942b2b" title="{{$crt['item']['name']}}" class="pro-cat">{{$crt['item']['name']}}</span>
 												</span>
 			
 												<p>{{number_format($crt['price'])}}
@@ -163,7 +164,7 @@
 								<a href="#">Tin tức</a>
 							</li>
 							<li>
-								<a href="contact-us.html">Liên hệ</a>
+							<a href="{{route('web.contact')}}">Liên hệ</a>
 							</li>
 						</ul>
 					</nav>

@@ -55,7 +55,12 @@
                 url: "{{ route('web.post.login') }}",
                 data:{email:email,password:password,_token:_token},
                 success:function(data){
-                    $('#error_acc').html(data);
+                    if(data==0){
+                        $('#error_acc').html('Tài khoản hoặc mật khẩu không đúng');
+                    }
+                    else{
+                        location.reload();
+                    }
                 },
             });      
         }); 
@@ -85,9 +90,9 @@
                         total_price+=value.price;
                         value.price = value.price.toLocaleString('en-US');
                         html+='<div class="shipping-item"><span class="cross-icon"><a href="" class="delete_cart" data-delete="'+value.item.id+'"><i class="fa fa-times-circle"></i></a></span>';
-						html+='<div class="shipping-item-image"><a href="#"><img style="width:40px;" src="storage/'+value.item.image+'" alt="shopping image" /></a></div>';
+						html+='<div class="shipping-item-image"><img style="width:40px;" src="storage/'+value.item.image+'" alt="shopping image" /></div>';
 						html+='<div class="shipping-item-text"><span>'+value.qty+'<span class="pro-quan-x">x</span>';
-						html+='<a href="#" style="text-transform: lowercase;" title="" class="pro-cat">'+value.item.name+'</a></span>';
+						html+='<span style="text-transform: lowercase;color:#942b2b" title="" class="pro-cat">'+value.item.name+'</span></span>';
                         html+='<p>'+value.price+'<sup>đ</sup></p></div></div>';
                     });
                     $('.list_product_cart').html(html);
@@ -123,9 +128,9 @@
                         total_price+=value.price;
                         value.price = value.price.toLocaleString('en-US');
                         html+='<div class="shipping-item"><span class="cross-icon"><a href="" class="delete_cart" data-delete="'+value.item.id+'"><i class="fa fa-times-circle"></i></a></span>';
-						html+='<div class="shipping-item-image"><a href="#"><img style="width:40px;" src="storage/'+value.item.image+'" alt="shopping image" /></a></div>';
+						html+='<div class="shipping-item-image"><img style="width:40px;" src="storage/'+value.item.image+'" alt="shopping image" /></div>';
 						html+='<div class="shipping-item-text"><span>'+value.qty+'<span class="pro-quan-x">x</span>';
-						html+='<a href="#" style="text-transform: lowercase;" title="" class="pro-cat">'+value.item.name+'</a></span>';
+						html+='<span style="text-transform: lowercase;color:#942b2b" title="" class="pro-cat">'+value.item.name+'</span></span>';
                         html+='<p>'+value.price+'<sup>đ</sup></p></div></div>';
                         });
                         $('.list_product_cart').html(html);

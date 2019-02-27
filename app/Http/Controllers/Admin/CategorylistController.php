@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Categorylist;
 use App\Product;
+use App\Http\Requests\CatelogsRequest;
 
 class CategorylistController extends Controller
 {
@@ -40,7 +41,7 @@ class CategorylistController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(CatelogsRequest $request)
     {
         $request->merge(['slug' => str_slug($request->name,'-')]);
         Categorylist::create($request->all());
@@ -77,7 +78,7 @@ class CategorylistController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(CatelogsRequest $request, $id)
     {
         $request->merge(['slug' => str_slug($request->name,'-')]);
         $category = Categorylist::findOrFail($id);

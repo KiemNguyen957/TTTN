@@ -10,6 +10,7 @@
     <link href='http://fonts.googleapis.com/css?family=Bitter:400,700,400italic&amp;subset=latin,latin-ext' rel='stylesheet'
         type='text/css'>
     <base href="{{asset('')}}">
+    <link href="web/img/logo.png" rel="icon">
     <!-- animate CSS -->
     <link rel="stylesheet" href="web/css/animate.css">
     <!-- FANCYBOX CSS -->

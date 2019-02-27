@@ -15,6 +15,7 @@ Route::post('/login','Auth\LoginController@postLogin')->name('web.post.login');
 Route::get('/register','Auth\RegisterController@getRegister')->name('web.get.register');
 Route::post('/register','Auth\RegisterController@postRegister')->name('web.post.register');
 Route::get('/','HomeController@index')->name('web.index');
+Route::get('/contact','HomeController@getContact')->name('web.contact');
 
 Route::get('/redirect/{social}', 'Auth\SocialAuthController@redirect');
 Route::get('/callback/{social}', 'Auth\SocialAuthController@callback');
@@ -35,4 +36,6 @@ Route::post('/delete-one','CartController@deleteOneCart')->name('web.cart.delete
 
 Route::post('/order','OrderController@create')->name('web.order');
 
+Route::resource('profile','ProfileController');
 
+Route::post('/search','HomeController@search')->name('web.search');

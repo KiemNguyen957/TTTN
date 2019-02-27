@@ -31,6 +31,6 @@ class ProductsTableSeeder extends Seeder
             'category_id'=>2,
             
         ]);
-        factory(Product::class,100)->create();
+        //factory(Product::class,100)->create();
     }
 }

@@ -9,7 +9,11 @@
                 <form action="{{ route('category.update',$category) }}" method="post" class="form-horizontal" enctype="multipart/form-data">
                 {{csrf_field()}} 
                 {{method_field('PUT')}}
-                <div class="col-md-3"></div>
+                <div class="col-md-3">@if(!$errors->isEmpty())
+                    <div class="text-red">
+                        {{$errors->first()}}
+                    </div>@endif
+                </div>
                 <div class="col-md-6 profile-text">
                     <div class="hidden-sm hidden-xs">
                     <div class="panel-body">

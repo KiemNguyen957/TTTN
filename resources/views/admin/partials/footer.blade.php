@@ -1,15 +1,10 @@
 <footer class="site-footer">
     <div class="text-center">
         <p>
-        &copy; Copyrights
-        <strong>Dashio</strong>. All Rights Reserved
+        <strong>Nguyen Van Kiem</strong> KTPM3
         </p>
         <div class="credits">
-        Created with Dashio template by
-        <a href="https://templatemag.com/">TemplateMag</a>
+        Đại học Công nghiệp Hà Nội
         </div>
-        <a href="index.html#" class="go-top">
-        <i class="fa fa-angle-up"></i>
-        </a>
     </div>
 </footer>

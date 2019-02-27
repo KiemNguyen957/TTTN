@@ -19,11 +19,11 @@ class LoginController extends Controller
             $password = $request->get('password');
             if (Auth::attempt(['email' => $email, 'password' => $password]))
             {
-                return redirect()->back();
+                return 1;
             }
             else
             {
-                return 'Tài khoản hoặc mật khẩu không đúng';
+                return 0;
             }
            
         }

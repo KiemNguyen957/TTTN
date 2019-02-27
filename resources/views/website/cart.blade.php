@@ -31,13 +31,11 @@
                                     @foreach ($list_product as $crt)
                                     <tr>
                                         <td class="cart-product">
-                                            <a href="#">
-                                                <img alt="Blouse" style="width:50px;" src="storage/{{$crt['item']['image']}}">
-                                            </a>
+                                            <img alt="Blouse" style="width:50px;" src="storage/{{$crt['item']['image']}}">
                                         </td>
                                         <td class="cart-description">
-                                            <p class="product-name">
-                                                <a href="#">{{$crt['item']['name']}}</a>
+                                            <p class="product-name" style="color:#515151;font-size:17px;">
+                                            {{$crt['item']['name']}}
                                             </p>
                                             <small>{{$crt['item']['operating_system']}}</small>
                                             <small>{{$crt['item']['cpu']}}</small>
@@ -173,13 +171,13 @@
                         value.item.price=parseInt(value.item.price).toLocaleString('en-US');
                         
                         html+='<div class="shipping-item"><span class="cross-icon"><a href="" class="delete_cart" data-delete="'+value.item.id+'"><i class="fa fa-times-circle"></i></a></span>';
-						html+='<div class="shipping-item-image"><a href="#"><img style="width:40px;" src="storage/'+value.item.image+'" alt="shopping image" /></a></div>';
+						html+='<div class="shipping-item-image"><img style="width:40px;" src="storage/'+value.item.image+'" alt="shopping image" /></div>';
 						html+='<div class="shipping-item-text"><span>'+value.qty+'<span class="pro-quan-x">x</span>';
-						html+='<a href="#" style="text-transform: lowercase;" title="" class="pro-cat">'+value.item.name+'</a></span>';
+						html+='<span style="text-transform: lowercase;color:#942b2b" title="" class="pro-cat">'+value.item.name+'</span></span>';
                         html+='<p>'+value.price+'<sup>đ</sup></p></div></div>';
                         //
-                        html_cart+='<tr><td class="cart-product"><a href="#"><img alt="Blouse" style="width:50px;" src="storage/'+value.item.image+'"></a></td>';
-                        html_cart+='<td class="cart-description"><p class="product-name"><a href="#">'+value.item.name+'</a></p>';
+                        html_cart+='<tr><td class="cart-product"><img alt="Blouse" style="width:50px;" src="storage/'+value.item.image+'"></td>';
+                        html_cart+='<td class="cart-description"><p class="product-name" style="color:#515151;font-size:17px;">'+value.item.name+'</p>';
                         html_cart+='<small>'+value.item.operating_system+'</small>';
                         html_cart+='<small>'+value.item.cpu+'</small></td>';
                         html_cart+='<td class="text-center"><ul class="price"><li class="price">'+value.item.price+'<sup>đ</sup></li></ul></td>';
@@ -233,13 +231,13 @@
                         value.price = value.price.toLocaleString('en-US');
                         value.item.price=parseInt(value.item.price).toLocaleString('en-US');
                         html+='<div class="shipping-item"><span class="cross-icon"><a href="" class="delete_cart" data-delete="'+value.item.id+'"><i class="fa fa-times-circle"></i></a></span>';
-						html+='<div class="shipping-item-image"><a href="#"><img style="width:40px;" src="storage/'+value.item.image+'" alt="shopping image" /></a></div>';
+						html+='<div class="shipping-item-image"><img style="width:40px;" src="storage/'+value.item.image+'" alt="shopping image" /></div>';
 						html+='<div class="shipping-item-text"><span>'+value.qty+'<span class="pro-quan-x">x</span>';
-						html+='<a href="#" style="text-transform: lowercase;" title="" class="pro-cat">'+value.item.name+'</a></span>';
+						html+='<span style="text-transform: lowercase;color:#942b2b" title="" class="pro-cat">'+value.item.name+'</span></span>';
                         html+='<p>'+value.price+'<sup>đ</sup></p></div></div>';
                         //
-                        html_cart+='<tr><td class="cart-product"><a href="#"><img alt="Blouse" style="width:50px;" src="storage/'+value.item.image+'"></a></td>';
-                        html_cart+='<td class="cart-description"><p class="product-name"><a href="#">'+value.item.name+'</a></p>';
+                        html_cart+='<tr><td class="cart-product"><img alt="Blouse" style="width:50px;" src="storage/'+value.item.image+'"></td>';
+                        html_cart+='<td class="cart-description"><p class="product-name" style="color:#515151;font-size:17px;">'+value.item.name+'</p>';
                         html_cart+='<small>'+value.item.operating_system+'</small>';
                         html_cart+='<small>'+value.item.cpu+'</small></td>';
                         html_cart+='<td class="text-center"><ul class="price"><li class="price">'+value.item.price+'<sup>đ</sup></li></ul></td>';
@@ -286,13 +284,13 @@
                         value.price = value.price.toLocaleString('en-US');
                         value.item.price=parseInt(value.item.price).toLocaleString('en-US');
                         html+='<div class="shipping-item"><span class="cross-icon"><a href="" class="delete_cart" data-delete="'+value.item.id+'"><i class="fa fa-times-circle"></i></a></span>';
-						html+='<div class="shipping-item-image"><a href="#"><img style="width:40px;" src="storage/'+value.item.image+'" alt="shopping image" /></a></div>';
+						html+='<div class="shipping-item-image"><img style="width:40px;" src="storage/'+value.item.image+'" alt="shopping image" /></div>';
 						html+='<div class="shipping-item-text"><span>'+value.qty+'<span class="pro-quan-x">x</span>';
-						html+='<a href="#" style="text-transform: lowercase;" title="" class="pro-cat">'+value.item.name+'</a></span>';
+						html+='<span style="text-transform: lowercase;color:#942b2b" title="" class="pro-cat">'+value.item.name+'</span></span>';
                         html+='<p>'+value.price+'<sup>đ</sup></p></div></div>';
                         //
-                        html_cart+='<tr><td class="cart-product"><a href="#"><img alt="Blouse" style="width:50px;" src="storage/'+value.item.image+'"></a></td>';
-                        html_cart+='<td class="cart-description"><p class="product-name"><a href="#">'+value.item.name+'</a></p>';
+                        html_cart+='<tr><td class="cart-product"><img alt="Blouse" style="width:50px;" src="storage/'+value.item.image+'"></td>';
+                        html_cart+='<td class="cart-description"><p class="product-name" style="color:#515151;font-size:17px;">'+value.item.name+'</p>';
                         html_cart+='<small>'+value.item.operating_system+'</small>';
                         html_cart+='<small>'+value.item.cpu+'</small></td>';
                         html_cart+='<td class="text-center"><ul class="price"><li class="price">'+value.item.price+'<sup>đ</sup></li></ul></td>';

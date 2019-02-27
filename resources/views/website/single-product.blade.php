@@ -24,11 +24,12 @@
 									<div class="tab-pane active" id="thumbnail_1">
 										<div class="single-product-image">
                                         <img src="storage/{{$product->image}}" alt="single-product-image" />
-											<a class="new-mark-box" href="#">new</a>
+										@if($product->sale!=0)
+										<span class="new-mark-box">-{{$product->sale}}%</span>@endif
 											<a class="fancybox" href="storage/{{$product->image}}" data-fancybox-group="gallery">
-												<span class="btn large-btn">View larger
+												<span class="btn large-btn">Xem ảnh
 													<i class="fa fa-search-plus"></i>
-												</span>
+													</span>
 											</a>
 										</div>
 									</div>
@@ -41,26 +42,19 @@
 							<div class="single-product-descirption">
 								<h2>{{$product->name}}</h2>
 								
-								<div class="single-product-review-box">
-									<div class="rating-box">
-										<i class="fa fa-star"></i>
-										<i class="fa fa-star"></i>
-										<i class="fa fa-star"></i>
-										<i class="fa fa-star"></i>
-										<i class="fa fa-star-half-empty"></i>
-									</div>
+								
+								<div class="single-product-condition">
+									<p>{{$product->categorylist->name}}
+										<span>chính hãng</span>
+									</p>
 									
 								</div>
-								<div class="single-product-condition">
-									<p>Reference:
-										<span>demo_1</span>
-									</p>
-									<p>Condition:
-										<span>New product</span>
-									</p>
-								</div>
 								<div class="single-product-price">
-									<h2>{{number_format($product->price)}} VND</h2>
+									<h2><div class="price-box">
+											<span class="price">{{number_format(($product->price*(100-$product->sale)/100))}} VND</span>
+											@if($product->sale!=0)
+											<span class="old-price">{{number_format($product->price)}} vnd</span>@endif
+										</div></h2>
 								</div>
 								<div class="single-product-desc">
                                 <p>{{$product->promotion}}</p>
@@ -70,7 +64,7 @@
 
 
 								<div class="single-product-add-cart">
-									<a class="add-cart-text" title="Add to cart" href="#">Add to cart</a>
+										<a href="" data-id="{{$product['id']}}" title="add to cart" class="add_cart add-cart-text">Add to cart</a>
 								</div>
 							</div>
 						</div>
@@ -87,9 +81,6 @@
 									</li>
 									<li>
 										<a href="#datasheet" data-toggle="tab">Thông số kỹ thuật</a>
-									</li>
-									<li>
-										<a href="#review" data-toggle="tab">reviews</a>
 									</li>
 								</ul>
 								<!-- Tab panes -->
@@ -140,40 +131,7 @@
 											</table>
 										</div>
 									</div>
-									<div class="tab-pane" id="review">
-										<div class="row tab-review-row">
-											<div class="col-xs-5 col-sm-4 col-md-4 col-lg-3 padding-5">
-												<div class="tab-rating-box">
-													<span>Grade</span>
-													<div class="rating-box">
-														<i class="fa fa-star"></i>
-														<i class="fa fa-star"></i>
-														<i class="fa fa-star"></i>
-														<i class="fa fa-star"></i>
-														<i class="fa fa-star-half-empty"></i>
-													</div>
-													<div class="review-author-info">
-														<strong>write A REVIEW</strong>
-														<span>06/22/2015</span>
-													</div>
-												</div>
-											</div>
-											<div class="col-xs-7 col-sm-8 col-md-8 col-lg-9 padding-5">
-												<div class="write-your-review">
-													<p>
-														<strong>write A REVIEW</strong>
-													</p>
-													<p>write A REVIEW</p>
-													<span class="usefull-comment">Was this comment useful to you?
-														<span>Yes</span>
-														<span>No</span>
-													</span>
-													<a href="#">Report abuse </a>
-												</div>
-											</div>
-											<a href="#" class="write-review-btn">Write your review!</a>
-										</div>
-									</div>
+									
 								</div>
 							</div>
 						</div>
@@ -185,18 +143,27 @@
 				<div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
 					<!-- SINGLE SIDE BAR START -->
 					<div class="single-product-right-sidebar">
-                            <h2 class="left-title">Product</h2>
+                            <h2 class="left-title">Sản phẩm</h2>
                             <ul>
                                 @foreach($products_category as $product_cat)
                                 <li>
                                     <a href="{{route('web.product.single',$product_cat->slug)}}">
                                     <img src="storage/{{$product_cat->image}}" style="max-width:80px" alt="" />
-                                    </a>
+									</a>
+									
                                     <div class="r-sidebar-pro-content">
+										
                                         <h5>
-                                            <a href="{{route('web.product.single',$product_cat->slug)}}">{{$product_cat->name}}</a>
-                                        </h5>
-                                    <p>{{number_format($product->price)}} VND</p>
+                                            <a style="padding: 5px;" href="{{route('web.product.single',$product_cat->slug)}}">{{$product_cat->name}}</a>
+										</h5>
+										@if($product->sale!=0)
+										<span style="color:red">-{{$product_cat->sale}}%</span>@endif
+                                    <p><div class="price-box">
+											<span class="price">{{number_format(($product_cat->price*(100-$product_cat->sale)/100))}} VND</span>
+											@if($product_cat->sale!=0)
+											<br>
+											<span class="old-price">{{number_format($product_cat->price)}} vnd</span>@endif
+										</div></p>
                                     </div>
                                 </li>
                                 @endforeach
@@ -220,4 +187,12 @@
 			</div>
 		</div>
     </section>
+@endsection
+@section('js')
+<script>
+    $(document).ready(function(){
+        addCart();
+        deleteCart();
+    });
+</script>
 @endsection

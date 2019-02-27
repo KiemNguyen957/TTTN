@@ -63,8 +63,9 @@
 		<div class="row">
 			<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
 				<div class="copy-right">
-					<address>Copyright © 2019
-						<a href="http://bootexperts.com/">Super</a>Broly</address>
+					<address>
+						<span>Nguyen Van Kiem </span> KTPM 3</address>
+						<p style="text-align: center">Đại học Công nghiệp Hà Nội</p>
 				</div>
 				<div class="scroll-to-top">
 					<a href="#" class="bstore-scrollertop">

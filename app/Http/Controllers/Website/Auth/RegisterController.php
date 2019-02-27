@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Website\Auth;
 use App\User;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Http\Requests\UserRequest;
 
 class RegisterController extends Controller
 {
@@ -12,7 +13,7 @@ class RegisterController extends Controller
     {
         return view('website.register');
     }
-    public function postRegister( Request $request)
+    public function postRegister( UserRequest $request)
     {
         $email = $request->email;
         $users = User::all();

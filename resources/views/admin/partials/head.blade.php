@@ -7,7 +7,7 @@
     <title>@yield('title')</title>
     <base href="{{asset('')}}">
     <!-- Favicons -->
-    <link href="admin/img/favicon.png" rel="icon">
+    <link href="web/img/logo.png" rel="icon">
     <link href="admin/img/apple-touch-icon.png" rel="apple-touch-icon">
     <!-- Bootstrap core CSS -->
     <link href="admin/lib/bootstrap/css/bootstrap.min.css" rel="stylesheet">
