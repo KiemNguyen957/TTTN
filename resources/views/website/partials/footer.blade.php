@@ -64,7 +64,7 @@
 			<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
 				<div class="copy-right">
 					<address>
-						<span>Nguyen Van Kiem </span> KTPM 3</address>
+						<span>Nguyễn Văn Kiểm + Vũ Mạnh Cường</span></address>
 						<p style="text-align: center">Đại học Công nghiệp Hà Nội</p>
 				</div>
 				<div class="scroll-to-top">

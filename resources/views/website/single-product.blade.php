@@ -45,7 +45,6 @@
 								
 								<div class="single-product-condition">
 									<p>{{$product->categorylist->name}}
-										<span>chính hãng</span>
 									</p>
 									
 								</div>
@@ -64,7 +63,7 @@
 
 
 								<div class="single-product-add-cart">
-										<a href="" data-id="{{$product['id']}}" title="add to cart" class="add_cart add-cart-text">Add to cart</a>
+										<a href="" data-id="{{$product['id']}}" title="add to cart" class="add_cart add-cart-text">Thêm giỏ hàng</a>
 								</div>
 							</div>
 						</div>
