@@ -86,7 +86,9 @@
 					<div class="center-title-area">
 						<h2 class="left-title">Khuyến mại</h2>
 					</div>
-					<div class="col-xs-12">
+					<div class="col-xs-
+					
+					">
 						<div class="row">
 							<div class="feartured-carousel">
 								@foreach($products_sale as $product)

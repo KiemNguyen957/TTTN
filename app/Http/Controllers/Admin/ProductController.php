@@ -24,10 +24,15 @@ class ProductController extends Controller
     public function index()
     {
         
-        $products = Product::orderBy('created_at', 'desc')->paginate(5);
+        $products = Product::orderBy('created_at', 'desc')->paginate(12);
         return view('admin.products.index',compact(['products']));
     }
-
+    public function index2()
+    {
+        
+        $products = Product::orderBy('created_at', 'desc')->paginate(5);
+        return view('admin.products.index2',compact(['products']));
+    }
     /**
      * Show the form for creating a new resource.
      *

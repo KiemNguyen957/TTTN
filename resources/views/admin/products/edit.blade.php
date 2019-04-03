@@ -82,7 +82,7 @@
                   <div class="form-group">
                       <label class="col-lg-4 control-label">Mô tả</label>
                       <div class="col-lg-8">
-                        <textarea class="form-control" name="description" id="contact-message" placeholder="Your Message" rows="3" data-rule="required" data-msg="Please write something for us">{{$product->description}}</textarea>
+                        <textarea class="form-control" id="" name="description" placeholder="Your Message" rows="3">{{$product->description}}</textarea>
                         <div class="validate"></div>
                       </div>
                   </div>
@@ -185,4 +185,11 @@
 <script type="text/javascript" src="admin/lib/bootstrap-datetimepicker/js/bootstrap-datetimepicker.js"></script>
 <script type="text/javascript" src="admin/lib/bootstrap-daterangepicker/moment.min.js"></script>
 <script type="text/javascript" src="admin/lib/bootstrap-timepicker/js/bootstrap-timepicker.js"></script>
-<script src="admin/lib/advanced-form-components.js"></script> @endsection
+<script src="admin/lib/advanced-form-components.js"></script>
+<script src="admin/lib/ckeditor.js"></script>
+<script>
+ 
+    CKEDITOR.replace('description');
+
+</script>    
+@endsection
